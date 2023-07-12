@@ -1,0 +1,89 @@
+.cardView {
+  background-color: #ffffff;
+
+  border-bottom: 1px solid black;
+  margin: 30px;
+  padding: 1%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.triangleUp {
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  margin-top: 20px;
+  margin-left: 5px;
+  border-style: solid;
+  border-left-width: 20px;
+  border-right-width: 20px;
+  border-bottom-width: 20px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: black;
+}
+
+.triangleDown {
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  margin-left: 5px;
+  border-style: solid;
+  border-left-width: 20px;
+  border-right-width: 20px;
+  border-bottom-width: 20px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: black;
+  transform: rotate(180deg);
+}
+
+.totalVoteCount {
+  font-size: 35px;
+  font-weight: bold;
+  margin-left: 5px;
+  align-items: center;
+  text-align: center;
+}
+
+.votesText {
+  font-size: 15px;
+  margin-top: 20px;
+  margin-left: 5px;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  margin-top: 10px;
+  margin-left: -5px;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.image {
+  border-radius: 10px;
+  width: 90px;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-vertical: 2%;
+}
+
+.labels {
+  color: #756e6e;
+  font-weight: bold;
+}
+
+.watchTrailerBtn {
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #089dd4;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
