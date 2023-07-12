@@ -45,7 +45,7 @@ mongoose
     console.error("Failed to connect to MongoDB:", error);
   });
 
-  //! ----------end of mongo connect ------------------------
+//! ----------end of mongo connect ------------------------
 
 
 
@@ -54,7 +54,7 @@ mongoose
 
 //~ Register a new user
 app.post("/register", async (req, res) => {
-  const { username, password,phone,email } = req.body;
+  const { username, password, phone, email } = req.body;
   try {
     const hashPassword = bcrypt.hashSync(password, bcryptSalt);
     const createdUser = await User.create({
@@ -111,9 +111,9 @@ app.post("/login", async (req, res) => {
 
 //  //~ Logout //
 
-//  app.post('/logout', (req , res)=>{
-//   res.cookie('token' , '' , {sameSite :'none' , secure:true}).json('deleted')
-//  })
+app.post('/logout', (req, res) => {
+  res.cookie('token', '', { sameSite: 'none', secure: true }).json('deleted')
+})
 
 
 //~ profile///
@@ -132,8 +132,69 @@ app.get("/profile", (req, res) => {
 });
 
 
+app.get('/alluser', async (req, res) => {
+  try {
+    const data = await User.find({});
+    return res.status(200).json({ data });
+  } catch (err) {
+    return res.status(500).json({ msg: err.message });
+  }
+});
 
-  
+
+
+// Get a single user by ID
+// app.get('/user/:id', async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const user = await User.findById(id);
+//     if (!user) {
+//       return res.status(404).json({ msg: 'User not found' });
+//     }
+//     return res.status(200).json(user);
+//   } catch (err) {
+//     return res.status(500).json({ msg: err.message });
+//   }
+// });
+
+// Update a user by ID
+// Update a user by ID
+
+
+app.patch('/updateuser/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const extuser = await User.findById(id);
+
+    if (!extuser)
+      return res.status(404).json({ msg: 'User not found' });
+
+    await User.findByIdAndUpdate(id, req.body);
+
+    return res.status(200).json({ msg: 'User updated successfully' });
+  } catch (err) {
+    return res.status(500).json({ msg: err.message });
+  }
+});
+
+
+
+
+
+// Delete a user by ID
+app.delete('/deleteuser/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByIdAndDelete(id);
+    if (!user) {
+      return res.status(404).json({ msg: 'User not found' });
+    }
+    return res.status(200).json({ msg: 'User deleted successfully' });
+  } catch (err) {
+    return res.status(500).json({ msg: err.message });
+  }
+});
+
 
 app.listen(4040);
 
