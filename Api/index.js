@@ -56,14 +56,15 @@ mongoose
 
 //~ Register a new user
 app.post("/register", async (req, res) => {
-  const { username, password, phone, email } = req.body;
+  const { username, password, phone, email, profession } = req.body;
   try {
     const hashPassword = bcrypt.hashSync(password, bcryptSalt);
     const createdUser = await User.create({
       username,
       password: hashPassword,
       phone,
-      email
+      email,
+      profession // Add the profession field here
     });
 
     jwt.sign(
@@ -86,6 +87,7 @@ app.post("/register", async (req, res) => {
     res.status(500).json("Internal server error");
   }
 });
+
 
 ///~login///
 

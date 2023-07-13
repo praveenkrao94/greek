@@ -38,6 +38,7 @@ const UserInfo = () => {
                         <th className="py-2 px-4 border">Name</th>
                         <th className="py-2 px-4 border">Email</th>
                         <th className="py-2 px-4 border">Phone Number</th>
+                        <th className="py-2 px-4 border">Profession</th>
                         <th className="py-2 px-4 border">Action</th>
                     </tr>
                 </thead>
@@ -48,6 +49,7 @@ const UserInfo = () => {
                             <td className="py-2 px-4 border">{user.username}</td>
                             <td className="py-2 px-4 border">{user.email}</td>
                             <td className="py-2 px-4 border">{user.phone}</td>
+                            <td className="py-2 px-4 border">{user.profession}</td>
                             <td className="py-2 px-4 border">
                                 <Link
                                     to={`/edituser/${user._id}`}

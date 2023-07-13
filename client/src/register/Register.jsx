@@ -11,6 +11,7 @@ function Register() {
     const [password, setPassword] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
+    const [profession, setProfession] = useState('');
     const [isloginorRegister, setIsLoginOrRegister] = useState('register')
 
     const { setUsername: setLoggedInUsername, setId } = useContext(UserContext);
@@ -22,7 +23,7 @@ function Register() {
         const userData = {
             username,
             password,
-            ...(isloginorRegister === 'register' && { phone, email }) // Include phone and email only if registering
+            ...(isloginorRegister === 'register' && { phone, email ,profession }) // Include phone and email only if registering
         };
         const { data } = await axios.post(url, userData);
 
@@ -67,6 +68,23 @@ function Register() {
                                 <input type="email" value={email} onChange={(ev) => setEmail(ev.target.value)} />
                                 <label>Email</label>
                             </div>
+                            
+                            <div className="user-box">
+     
+                            <select
+                                id="profession"
+                                value={profession}
+                                onChange={(event) => setProfession(event.target.value)}
+                                className="border border-gray-300 px-3 py-2 rounded-md bg-green-700 text-white"
+                            >
+                                <option value="">Select Profession</option>
+                                <option value="Developer">Developer</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Hr">Hr</option>
+                                <option value="Designer">Designer</option>
+                            </select>
+                            </div>
+                       
                         </div>
                     )}
                     <div className='flex items-center justify-center -mt-6'>
