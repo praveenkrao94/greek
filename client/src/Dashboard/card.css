@@ -11,6 +11,11 @@
   flex-direction: row;
 }
 
+.flexShrink {
+  position: relative;
+  left: 40px;
+}
+
 .triangleUp {
   width: 0;
   height: 0;
@@ -66,11 +71,11 @@
 }
 
 .image {
+  position: relative;
+  top: 10px;
+  left: 15px;
   border-radius: 10px;
-  width: 90px;
-  margin-left: 2%;
-  margin-right: 2%;
-  margin-vertical: 2%;
+  width: 100px;
 }
 
 .labels {
